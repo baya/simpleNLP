@@ -10,6 +10,8 @@ import re
 import sys
 
 
+regex=re.compile(r"(?x) (?: [\w-]+  | [\x80-\xff]{3} )")
+
 def init_wordslist(fn="./words.txt"):
     f=open(fn)
     lines=sorted(f.readlines())
@@ -48,7 +50,6 @@ def search_in_trie(chars, trie):
             break
 def main():
     #init
-    regex=re.compile(r"(?x) (?: [\w-]+  | [\x80-\xff]{3} )")
     words=init_wordslist()
     trie=words_2_trie(words)
     #read content
